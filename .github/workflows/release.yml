@@ -26,10 +26,3 @@ jobs:
           target-branch: main
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
-
-      - name: Debug listar arquivos e mostrar config
-        run: |
-          pwd
-          ls -la
-          echo "Conteúdo de release-please-config.json:"
-          cat release-please-config.json || echo "Arquivo não encontrado"
