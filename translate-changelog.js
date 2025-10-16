@@ -1,6 +1,6 @@
 // translate-changelog.js
 const fs = require("fs");
-const translate = require("@vitalets/google-translate-api");
+const translate = require("@vitalets/google-translate-api").default;
 
 const changelogPath = "CHANGELOG.md";
 const translatedPath = "CHANGELOG_PT.md";
@@ -8,7 +8,6 @@ const content = fs.readFileSync(changelogPath, "utf8");
 
 // Função para remover links Markdown, mantendo apenas o texto
 function removeLinks(text) {
-  // transforma [texto](url) em "texto"
   return text.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
 }
 
