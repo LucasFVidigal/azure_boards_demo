@@ -38,5 +38,7 @@ jobs:
               {"type":"docs","section":"📝 Documentação","hidden":false},
               {"type":"test","section":"🧪 Testes","hidden":false},
               {"type":"build","section":"🏗️ Build","hidden":false},
-              {"type":"chore","section":"⚙️ Ajustes Internos","hidden":false}
+              {"type":"chore","section":"⚙️ Ajustes Internos","hidden":false},
+              {"type":"ci","section":"🤖 CI/CD","hidden":false},
+              {"type":"revert","section":"↩️ Reversões","hidden":false}
             ]
