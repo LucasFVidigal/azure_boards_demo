@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.4.0...v1.4.1) (2025-10-16)
+
+
+### Bug Fixes
+
+* segundo teste ([35aec0d](https://github.com/LucasFVidigal/azure_boards_demo/commit/35aec0d5726f2b26e9378a586a8edfca4cb075c7))
+
 ## [1.4.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.3.0...v1.4.0) (2025-10-16)
 
 
