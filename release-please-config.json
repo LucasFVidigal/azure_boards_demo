@@ -1,0 +1,20 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "changelog-sections": {
+        "feat": "✨ Novidades",
+        "fix": "🐞 Correções",
+        "perf": "⚡ Performance",
+        "refactor": "🧹 Refatorações",
+        "docs": "📝 Documentação",
+        "test": "🧪 Testes",
+        "build": "🏗️ Build",
+        "chore": "⚙️ Ajustes Internos",
+        "ci": "🤖 CI/CD",
+        "cd": "🤖 CI/CD",
+        "revert": "↩️ Reversões"
+      }
+    }
+  }
+}
