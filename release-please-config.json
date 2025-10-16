@@ -1,0 +1,30 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "changelog-sections": [
+        {
+          "type": "feat",
+          "section": "✨ Novidades"
+        },
+        {
+          "type": "fix",
+          "section": "🐛 Correções"
+        },
+        {
+          "type": "perf",
+          "section": "⚡ Melhorias de Performance"
+        },
+        {
+          "type": "docs",
+          "section": "📚 Documentação"
+        },
+        {
+          "type": "refactor",
+          "section": "🔨 Refatorações"
+        }
+      ],
+      "bump-minor-pre-major": true
+    }
+  }
+}
