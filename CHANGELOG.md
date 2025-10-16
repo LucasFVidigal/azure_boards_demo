@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.7.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.6.0...v1.7.0) (2025-10-16)
+
+
+### Features
+
+* update release.yml ([4da57c7](https://github.com/LucasFVidigal/azure_boards_demo/commit/4da57c73331ec645fbd4d84f4dbbe89a22708f2e))
+
+
+### Bug Fixes
+
+* fixed token ([40d2ada](https://github.com/LucasFVidigal/azure_boards_demo/commit/40d2ada61802dd1a1b5647b87447408847c06893))
+
 ## [1.6.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.5.0...v1.6.0) (2025-10-16)
 
 
