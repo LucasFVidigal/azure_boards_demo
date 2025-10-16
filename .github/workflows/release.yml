@@ -24,5 +24,15 @@ jobs:
           release-type: node
           path: .
           target-branch: main
-          config-file: release-please-config.json
-          manifest-file: .release-please-manifest.json
+          package-name: "."
+          bump-minor-pre-major: true
+          changelog-sections: |
+            [
+              {"type":"feat","section":"✨ Novidades"},
+              {"type":"fix","section":"🐛 Correções"},
+              {"type":"perf","section":"⚡ Melhorias de Performance"},
+              {"type":"docs","section":"📚 Documentação"},
+              {"type":"chore","section":"🛠️ Tarefas e Ajustes"},
+              {"type":"refactor","section":"🔨 Refatorações"},
+              {"type":"test","section":"🧪 Testes"}
+            ]
