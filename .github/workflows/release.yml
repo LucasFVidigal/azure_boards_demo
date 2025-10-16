@@ -1,27 +1,40 @@
-name: 🚀 Release Automático
+# Nome do seu workflow
+name: Release Please
 
+# Configura quando o workflow será executado
+# Roda sempre que houver um push na branch 'main' (ou a sua branch principal, como 'master', se for o caso)
 on:
   push:
     branches:
-      - main
-      - master
+      - main # Mude para a sua branch principal se for diferente (ex: master)
 
+# Permissões necessárias para o Release-Please criar PRs, releases, e modificar arquivos
 permissions:
-  contents: write
-  pull-requests: write
-
+  contents: write # Para criar tags, releases e atualizar arquivos como CHANGELOG/package.json
+  pull-requests: write # Para criar e atualizar o Pull Request de release
+  
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Run Release Please
+      - name: Release Please
+        # Utiliza a Action oficial do Google para o Release-Please
+        # A versão v4 é a recomendada atualmente
         uses: googleapis/release-please-action@v4
+        id: release
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          release-type: node
-          path: .
-          target-branch: main
-          config-file: release-please-config.json
+          # Define o tipo de release. Escolha o que melhor se adapta ao seu projeto:
+          # Exemplos comuns: node, java, go, python, simple (para projetos que não usam um gerenciador de pacotes específico)
+          release-type: node # Exemplo: ideal para projetos Node.js com package.json
+          # Opcionalmente, você pode especificar um arquivo de configuração mais avançado
+          # config-file: release-please-config.json
+          
+      # Exemplo de como você pode usar a saída da Action (opcional)
+      # Esta etapa só roda se uma nova release foi criada (ou seja, se o PR de release foi mergeado)
+      - name: Se a release foi criada, rode uma ação de deploy, build, etc.
+        if: ${{ steps.release.outputs.releases_created }}
+        run: |
+          echo "Nova release criada!"
+          echo "Tag: ${{ steps.release.outputs.tag_name }}"
+          # Adicione seus comandos de deploy/build/publicação aqui
