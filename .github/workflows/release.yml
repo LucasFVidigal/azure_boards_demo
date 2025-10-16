@@ -25,4 +25,3 @@ jobs:
           path: .
           target-branch: main
           config-file: release-please-config.json
-          manifest-file: .release-please-manifest.json
