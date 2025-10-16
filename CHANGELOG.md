@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.3.0...v1.4.0) (2025-10-16)
+
+
+### Features
+
+* teste ponto ([7bafb32](https://github.com/LucasFVidigal/azure_boards_demo/commit/7bafb3256a7ad081e3381abbc7544bb216f108a6))
+
 ## [1.3.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.2.0...v1.3.0) (2025-10-16)
 
 
