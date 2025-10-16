@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.4.1...v1.5.0) (2025-10-16)
+
+
+### Features
+
+* teste aaaa ([f7cd55f](https://github.com/LucasFVidigal/azure_boards_demo/commit/f7cd55fc679567a001a98e922b3d76f359ee6aa4))
+* update files ([de9d3e0](https://github.com/LucasFVidigal/azure_boards_demo/commit/de9d3e0985e3f7c41bd31dfd6f2d132d537a68a5))
+
 ## [1.4.1](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.4.0...v1.4.1) (2025-10-16)
 
 
