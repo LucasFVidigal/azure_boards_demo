@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - master
 
 permissions:
   contents: write
@@ -13,32 +14,14 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - name: ⚙️ Executar Release Please
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Release Please
         uses: googleapis/release-please-action@v4
         with:
-          # Tipo de projeto (ajuste se for outro tipo, ex: terraform, python, etc.)
+          token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
-          package-name: moka-web-platform
-
-          # Título e descrição do PR de release
-          pull-request-title-pattern: "🚀 Release: v${version}"
-          pull-request-header: |
-            ## 📦 Nova versão v${version}
-
-            Este PR contém as mudanças que serão publicadas em **produção**.
-            Confira o changelog detalhado abaixo 👇
-
-          # Define os tipos de commit e as seções do changelog em português
-          changelog-types: |
-            [
-              {"type":"feat","section":"✨ Novidades","hidden":false},
-              {"type":"fix","section":"🐞 Correções","hidden":false},
-              {"type":"perf","section":"⚡ Performance","hidden":false},
-              {"type":"refactor","section":"🧹 Refatorações","hidden":false},
-              {"type":"docs","section":"📝 Documentação","hidden":false},
-              {"type":"test","section":"🧪 Testes","hidden":false},
-              {"type":"build","section":"🏗️ Build","hidden":false},
-              {"type":"chore","section":"⚙️ Ajustes Internos","hidden":false},
-              {"type":"ci","section":"🤖 CI/CD","hidden":false},
-              {"type":"revert","section":"↩️ Reversões","hidden":false}
-            ]
+          path: .
+          target-branch: main
+          config-file: release-please-config.json
