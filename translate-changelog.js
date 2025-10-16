@@ -1,6 +1,5 @@
 // translate-changelog.js
 const fs = require("fs");
-const translate = require("@vitalets/google-translate-api").default;
 
 const changelogPath = "CHANGELOG.md";
 const translatedPath = "CHANGELOG_PT.md";
@@ -14,6 +13,7 @@ function removeLinks(text) {
 (async () => {
   const lines = content.split("\n");
   const translatedLines = [];
+  const { default: translate } = await import("@vitalets/google-translate-api");
 
   for (const line of lines) {
     // Ignora cabeçalhos e blocos de código
