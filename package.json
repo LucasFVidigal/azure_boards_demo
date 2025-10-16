@@ -1,6 +1,6 @@
 {
   "name": "azure_boards_demo",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "- Item 1",
   "main": "index.js",
   "scripts": {

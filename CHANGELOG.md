@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.2.0...v1.3.0) (2025-10-16)
+
+
+### Features
+
+* update release ([f53f0c9](https://github.com/LucasFVidigal/azure_boards_demo/commit/f53f0c97a45d2abe51b65c8fc60195cae9ce329b))
+
 ## [1.2.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.1.0...v1.2.0) (2025-10-16)
 
 
