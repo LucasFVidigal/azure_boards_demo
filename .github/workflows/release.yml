@@ -30,10 +30,11 @@ jobs:
           path: .
           target-branch: main
 
+      - name: Install dependencies for translation
+        run: npm install @vitalets/google-translate-api
+
       - name: Translate CHANGELOG to PT-BR
-        run: |
-            npm install -g @vitalets/google-translate-api
-            node translate-changelog.js
+        run: node translate-changelog.js
 
       - name: Create PR with translated changelog
         env:
