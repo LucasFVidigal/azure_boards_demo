@@ -17,12 +17,61 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
       - name: Run Release Please
         uses: googleapis/release-please-action@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.RELEASE_TOKEN }}
           release-type: node
           path: .
           target-branch: main
-          config-file: release-please-config.json
-          manifest-file: .release-please-manifest.json
+
+      - name: Translate CHANGELOG to PT-BR
+        run: |
+          npm install -g @vitalets/google-translate-api
+          node -e "
+            const fs = require('fs');
+            const translate = require('@vitalets/google-translate-api');
+            const changelogPath = 'CHANGELOG.md';
+            const translatedPath = 'CHANGELOG_PT.md';
+            const content = fs.readFileSync(changelogPath, 'utf8');
+
+            (async () => {
+              const lines = content.split('\n');
+              const translatedLines = [];
+
+              for (const line of lines) {
+                if (/^```/.test(line) || /^#+ /.test(line) || /^[-*]/.test(line) || line.trim() === '') {
+                  translatedLines.push(line);
+                } else {
+                  const res = await translate(line, { to: 'pt' });
+                  translatedLines.push(res.text);
+                }
+              }
+
+              fs.writeFileSync(translatedPath, translatedLines.join('\n'), 'utf8');
+              console.log('Changelog traduzido salvo em CHANGELOG_PT.md');
+            })();
+          "
+
+      - name: Create PR with translated changelog
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git checkout -b changelog-pt || git checkout changelog-pt
+          git add CHANGELOG_PT.md
+          git commit -m "📖 Traduzir changelog para PT-BR"
+          git push origin changelog-pt --force
+
+          gh pr create \
+            --title "📖 Changelog em PT-BR" \
+            --body "Tradução automática do changelog gerado pelo release-please." \
+            --base main \
+            --head changelog-pt
