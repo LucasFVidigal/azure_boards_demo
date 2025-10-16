@@ -8,12 +8,8 @@
         "perf": "⚡ Performance",
         "refactor": "🧹 Refatorações",
         "docs": "📝 Documentação",
-        "test": "🧪 Testes",
         "build": "🏗️ Build",
-        "chore": "⚙️ Ajustes Internos",
-        "ci": "🤖 CI/CD",
-        "cd": "🤖 CI/CD",
-        "revert": "↩️ Reversões"
+        "chore": "⚙️ Ajustes Internos"
       }
     }
   }
