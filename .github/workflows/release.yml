@@ -1,50 +1,61 @@
-name: Gerar changelog traduzido
+name: 🚀 Release Automático
 
 on:
   push:
     branches:
       - main
+      - master
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
-  changelog:
-    name: Gerar e traduzir changelog
+  release-please:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout do código
-        uses: actions/checkout@v3
+      # 1️⃣ Checkout do repositório
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Instalar Node.js
+      # 2️⃣ Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 20
 
-      - name: Instalar Release Please
-        run: npm install -g release-please
-
-      - name: Gerar changelog com Release Please
-        run: |
-          release-please changelog --repo-url=${{ github.repository }} --token=${{ secrets.GITHUB_TOKEN }} > changelog.md
-
-      - name: Traduzir changelog para português
-        run: |
-          # Remove links de commits
-          sed -E 's/\([^)]+\)//g' changelog.md > changelog-no-links.md
-
-          # Traduz usando ferramenta simples (exemplo com translate-shell)
-          # Instala translate-shell
-          sudo apt-get install translate-shell
-
-          # Traduz linha por linha
-          while IFS= read -r line; do
-            echo "$(trans -b :pt "$line")" >> tim-log-PT.md
-          done < changelog-no-links.md
-
-      - name: Criar Pull Request com tim-log-PT.md
-        uses: peter-evans/create-pull-request@v5
+      # 3️⃣ Rodar release-please
+      - name: Run Release Please
+        uses: googleapis/release-please-action@v4
         with:
-          commit-message: "Adiciona changelog traduzido para português"
-          branch: changelog-pt
-          title: "Changelog traduzido para português"
-          body: "Este PR adiciona o changelog traduzido para português no arquivo tim-log-PT.md"
-          add-paths: tim-log-PT.md
+          token: ${{ secrets.RELEASE_TOKEN }}  # PAT com permissão repo
+          release-type: node
+          path: .
+          target-branch: main
+
+      # 4️⃣ Instalar dependências para tradução
+      - name: Install dependencies for translation
+        run: npm install @vitalets/google-translate-api
+
+      # 5️⃣ Traduzir CHANGELOG para PT-BR
+      - name: Translate CHANGELOG to PT-BR
+        run: node translate-changelog.js
+
+      # 6️⃣ Commit e PR do changelog traduzido
+      - name: Create PR with translated changelog
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git checkout -b changelog-pt || git checkout changelog-pt
+          git add CHANGELOG_PT.md
+          git commit -m "📖 Traduzir changelog para PT-BR" || echo "No changes to commit"
+          git push origin changelog-pt --force
+
+          gh pr create \
+            --title "📖 Changelog em PT-BR" \
+            --body "Tradução automática do changelog gerado pelo release-please." \
+            --base main \
+            --head changelog-pt
