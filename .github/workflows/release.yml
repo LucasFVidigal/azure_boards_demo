@@ -1,94 +1,50 @@
-name: Release e Tradução
+name: Gerar changelog traduzido
 
 on:
   push:
-    # Ajuste para a branch principal do seu projeto (ex: main, master)
     branches:
       - main
 
-permissions:
-  contents: write # Necessário para release-please criar tags/releases/PRs
-  pull-requests: write # Necessário para release-please e para o PR do changelog traduzido
-
 jobs:
-  release:
+  changelog:
+    name: Gerar e traduzir changelog
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v4
-        # É importante buscar o histórico completo para o release-please funcionar corretamente
-        with:
-          fetch-depth: 0 
+        uses: actions/checkout@v3
 
-      - name: Executar Release Please
-        id: release
-        uses: googleapis/release-please-action@v4
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
         with:
-          # Usa o GITHUB_TOKEN padrão para a maioria das operações
-          token: ${{ secrets.GITHUB_TOKEN }} 
-          # Se você usar release-type: simple, o changelog padrão é CHANGELOG.md
-          release-type: node # Ajuste para o tipo do seu projeto (ex: simple, java, python, etc.)
-          # Configura o caminho do changelog gerado (o release-please o cria/atualiza)
-          changelog-path: CHANGELOG.md 
+          node-version: '18'
 
-      # Esta etapa só deve ser executada se uma nova release foi criada (o PR de release foi merged)
-      - name: Processar e Traduzir Changelog
-        if: ${{ steps.release.outputs.release_created }}
+      - name: Instalar Release Please
+        run: npm install -g release-please
+
+      - name: Gerar changelog com Release Please
         run: |
-          # 1. Obter a última entrada do Changelog.md (que contém o novo release)
-          # O release-please adiciona a nova entrada no topo do CHANGELOG.md
-          # Usaremos 'awk' para pegar o conteúdo da última versão (do primeiro '##' até o próximo '##' ou fim do arquivo)
-          # O grep remove as linhas em branco extras no início e no fim
-          NEW_CHANGELOG_ENTRY=$(awk '/^## / {if (p) exit} {if (!p && /^## /) p=1; if (p) print}' CHANGELOG.md | tail -n +2)
-          
-          # 2. Remover links dos commits (ex: ' ([hash])')
-          # O changelog gerado pelo release-please é algo como:
-          # * feat: Nova funcionalidade ([hash])
-          # O 'sed' remove o padrão ' ([qualquercoisa])'
-          CHANGELOG_SEM_LINKS=$(echo "$NEW_CHANGELOG_ENTRY" | sed -E 's/ \(\[([0-9a-f]+|dependabot\[bot\])\]\(.*?\)\)//g')
+          release-please changelog --repo-url=${{ github.repository }} --token=${{ secrets.GITHUB_TOKEN }} > changelog.md
 
-          # 3. Preparar o texto para tradução (mantendo a formatação Markdown)
-          echo "NEW_CHANGELOG_TO_TRANSLATE<<EOF" >> $GITHUB_ENV
-          echo "$CHANGELOG_SEM_LINKS" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-          
-      - name: Traduzir Changelog para Português
-        if: ${{ steps.release.outputs.release_created }}
-        id: translate
-        # Usaremos uma Action de tradução que suporta Markdown
-        # Nota: Você precisará de uma chave de API para a maioria das Actions de tradução (DeepL, Google, etc.)
-        # Este exemplo usa uma Action popular que usa DeepL.
-        # Você deve configurar a chave DeepL no Secrets do seu repositório.
-        uses: actions-cool/deepl-translate-action@v1
-        with:
-          # Obtenha a chave de API em https://www.deepl.com/pro-api
-          deepl_api_key: ${{ secrets.DEEPL_API_KEY }} 
-          # O conteúdo a ser traduzido é a variável de ambiente definida acima
-          text: ${{ env.NEW_CHANGELOG_TO_TRANSLATE }} 
-          # O idioma de origem (Inglês) para o idioma de destino (Português)
-          lang: en-pt 
-        
-      - name: Salvar Changelog Traduzido
-        if: ${{ steps.release.outputs.release_created }}
+      - name: Traduzir changelog para português
         run: |
-          # Obter a versão e a data da última entrada no CHANGELOG.md
-          # (Para formatar o novo arquivo de forma similar)
-          LATEST_VERSION_HEADER=$(grep -m 1 '^## ' CHANGELOG.md)
-          
-          # Criar o conteúdo completo
-          FULL_PT_CHANGELOG_CONTENT="$LATEST_VERSION_HEADER\n\n${{ steps.translate.outputs.translated_text }}"
-          
-          # Adicionar ao arquivo e garantir que haja uma linha de quebra final
-          echo -e "$FULL_PT_CHANGELOG_CONTENT" >> CHANGELOG_PT.md
+          # Remove links de commits
+          sed -E 's/\([^)]+\)//g' changelog.md > changelog-no-links.md
 
-      - name: Criar Pull Request do Changelog em Português
-        if: ${{ steps.release.outputs.release_created }}
-        uses: peter-evans/create-pull-request@v6
+          # Traduz usando ferramenta simples (exemplo com translate-shell)
+          # Instala translate-shell
+          sudo apt-get install translate-shell
+
+          # Traduz linha por linha
+          while IFS= read -r line; do
+            echo "$(trans -b :pt "$line")" >> tim-log-PT.md
+          done < changelog-no-links.md
+
+      - name: Criar Pull Request com tim-log-PT.md
+        uses: peter-evans/create-pull-request@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'docs: Add translated changelog for ${{ steps.release.outputs.tag_name }}'
-          title: 'docs: Changelog em Português para ${{ steps.release.outputs.tag_name }}'
-          body: 'Este Pull Request contém a tradução do último release gerado pelo release-please para português, sem os links de commit.'
-          branch: 'chore/changelog-pt-${{ steps.release.outputs.tag_name }}'
-          # O arquivo a ser adicionado ao PR
-          add-paths: CHANGELOG_PT.md
+          commit-message: "Adiciona changelog traduzido para português"
+          branch: changelog-pt
+          title: "Changelog traduzido para português"
+          body: "Este PR adiciona o changelog traduzido para português no arquivo tim-log-PT.md"
+          add-paths: tim-log-PT.md
