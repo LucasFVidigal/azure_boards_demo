@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.10.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.9.0...v1.10.0) (2025-10-17)
+
+
+### Features
+
+* adjust workflows ([6b695bf](https://github.com/LucasFVidigal/azure_boards_demo/commit/6b695bfad5544d1a0a4f6f6410f2553da5c62803))
+* adjust workflows ([04856ab](https://github.com/LucasFVidigal/azure_boards_demo/commit/04856abc6a717c980c200fc5fd367626bad71f07))
+* clear all the errors ([f5bf16e](https://github.com/LucasFVidigal/azure_boards_demo/commit/f5bf16ece43e7544b63f744a6eb4eadcd300beca))
+* teste ([5537716](https://github.com/LucasFVidigal/azure_boards_demo/commit/553771621fd9805cc3d82aea58f14877b3bd3944))
+* **teste-compontent:** test all ([23bd238](https://github.com/LucasFVidigal/azure_boards_demo/commit/23bd23850e88febf5cd1a4f3dea223c6f8d67c31))
+
+
+### Bug Fixes
+
+* fixes source branchs ([54bab18](https://github.com/LucasFVidigal/azure_boards_demo/commit/54bab18fb3219d0b081835e5a5d624ce40b70c58))
+* fixes source branchs ([a51ff0d](https://github.com/LucasFVidigal/azure_boards_demo/commit/a51ff0d0f8875afc31e36c4827f2339613e93c9d))
+
 ## [1.9.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.8.0...v1.9.0) (2025-10-17)
 
 
