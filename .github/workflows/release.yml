@@ -31,4 +31,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
           path: .
-          target-branch: develop       # ← branch que vai receber o PR
+          target-branch: release       # ← branch que vai receber o PR
