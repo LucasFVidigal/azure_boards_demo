@@ -46,11 +46,11 @@ jobs:
           # Remove links de commits
           sed -E 's/
 
-          \[[^\]
+\[[^\]
 
-          ]+\]
+]+\]
 
-          \([^)]+\)//g' CHANGELOG.md > changelog-no-links.md
+\([^)]+\)//g' CHANGELOG.md > changelog-no-links.md
 
           # Traduz linha por linha
           > CHANGELOG_PT.md
