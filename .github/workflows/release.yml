@@ -39,7 +39,7 @@ jobs:
 
       # 5️⃣ Traduzir CHANGELOG para PT-BR
       - name: Translate CHANGELOG to PT-BR
-        run: node translate-changelog.mjs
+        run: node translate-changelog.js
 
       # 6️⃣ Commit e PR do changelog traduzido
       - name: Create PR with translated changelog
