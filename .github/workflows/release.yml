@@ -44,13 +44,7 @@ jobs:
       - name: Translate CHANGELOG to PT-BR
         run: |
           # Remove links de commits
-          sed -E 's/
-
-\[[^\]
-
-]+\]
-
-\([^)]+\)//g' CHANGELOG.md > changelog-no-links.md
+          sed -E 's/\[[^\]]+\]\([^)]+\)//g' CHANGELOG.md > changelog-no-links.md
 
           # Traduz linha por linha
           > CHANGELOG_PT.md
