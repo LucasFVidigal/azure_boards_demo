@@ -38,3 +38,7 @@ function removeLinks(text) {
   fs.writeFileSync(translatedPath, translatedLines.join("\n"), "utf8");
   console.log("Changelog traduzido e links removidos salvo em CHANGELOG_PT.md");
 })();
+
+
+// Isso aqui nao funciona
+// Tetse
