@@ -28,7 +28,7 @@ jobs:
       - name: Run Release Please
         uses: googleapis/release-please-action@v4
         with:
-          token: ${{ secrets.RELEASE_TOKEN }}  # PAT com permissão repo
+          token: ${{ secrets.GIThub_token }}  # PAT com permissão repo
           release-type: node
           path: .
           target-branch: main
@@ -44,7 +44,7 @@ jobs:
       # 6️⃣ Commit e PR do changelog traduzido
       - name: Create PR with translated changelog
         env:
-          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GH_TOKEN: ${{ secrets.GIThub_token }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
