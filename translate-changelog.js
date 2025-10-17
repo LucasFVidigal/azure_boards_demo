@@ -41,3 +41,4 @@ function removeLinks(text) {
 
 
 // Isso aqui nao funciona
+// Tetse
