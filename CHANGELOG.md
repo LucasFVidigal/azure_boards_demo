@@ -1,5 +1,32 @@
 # Changelog
 
+## [1.8.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.7.0...v1.8.0) (2025-10-17)
+
+
+### Features
+
+* aaaa ([b3b8a17](https://github.com/LucasFVidigal/azure_boards_demo/commit/b3b8a1713349a0f3b216851a76bcb02b067bd913))
+* test gemini option ([8137ecf](https://github.com/LucasFVidigal/azure_boards_demo/commit/8137ecf185bf5622475fab26e1cf1d0a79e275c9))
+
+
+### Bug Fixes
+
+* add coplit soulution ([09f601a](https://github.com/LucasFVidigal/azure_boards_demo/commit/09f601ae3fa3e81fff188cfe4f6e94e5c1561602))
+* chande all things ([85d5b5f](https://github.com/LucasFVidigal/azure_boards_demo/commit/85d5b5f4e8087e62efe13f5536c892b6b9397837))
+* fix file extension ([240467b](https://github.com/LucasFVidigal/azure_boards_demo/commit/240467b1d5b0900cb8ebb90ac0cc4b3cf1768e79))
+* fix run trnals ([11e2faa](https://github.com/LucasFVidigal/azure_boards_demo/commit/11e2faa104c979df22b45fd59c5740b4325c46d7))
+* fix scc ([c413492](https://github.com/LucasFVidigal/azure_boards_demo/commit/c4134923428182d8fbe931ec24233ecb03741b1e))
+* fix token ([df16a11](https://github.com/LucasFVidigal/azure_boards_demo/commit/df16a119e9ed2a63a738fa31f00dd885efb24b2f))
+* fixed tranlate script ([6b80ec6](https://github.com/LucasFVidigal/azure_boards_demo/commit/6b80ec6048866ba34564c6b966a7063387e957c5))
+* fixed translate  step ([9f56f0e](https://github.com/LucasFVidigal/azure_boards_demo/commit/9f56f0ec317f8c938089477b3639ee634ceaa4ca))
+* fixed translate changelog ([80dba52](https://github.com/LucasFVidigal/azure_boards_demo/commit/80dba52c34034549eefe78d76248e9c96aab4569))
+* fixed translate-changelog.js script ([589d200](https://github.com/LucasFVidigal/azure_boards_demo/commit/589d20076567ffc3bca508715c10327fee498819))
+* tensta essa bosta ([b3772ba](https://github.com/LucasFVidigal/azure_boards_demo/commit/b3772ba4a32d925937972c765aa4342a6a46381b))
+* translate changelog 2 ([0bbff0c](https://github.com/LucasFVidigal/azure_boards_demo/commit/0bbff0c1ee791b67f0d9e885facea191a5876731))
+* try chat gpt ([85db60f](https://github.com/LucasFVidigal/azure_boards_demo/commit/85db60f7489543f986bed1f03b53d8801b4a31d3))
+* try copilot ([713cca3](https://github.com/LucasFVidigal/azure_boards_demo/commit/713cca32df305f2683a96f55236e3a573630a973))
+* try fix changelog ([3bd9e94](https://github.com/LucasFVidigal/azure_boards_demo/commit/3bd9e9492c3074f027e110a0eb5edf74462042ae))
+
 ## [1.7.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.6.0...v1.7.0) (2025-10-16)
 
 
