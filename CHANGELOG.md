@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.8.0...v1.9.0) (2025-10-17)
+
+
+### Features
+
+* **clear-componente:** try to clean commits links ([6d4a59b](https://github.com/LucasFVidigal/azure_boards_demo/commit/6d4a59b72bb473669b5a3b8d0f749fe8f6a65393))
+
 ## [1.8.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.7.0...v1.8.0) (2025-10-17)
 
 
