@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.12.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.11.0...v1.12.0) (2025-10-23)
+
+
+### Features
+
+* added console.log on main.js ([15d362a](https://github.com/LucasFVidigal/azure_boards_demo/commit/15d362ace29d5e0fdf8c4439b2530579bbb2edbc))
+* update deepseek parameters ([77f993d](https://github.com/LucasFVidigal/azure_boards_demo/commit/77f993d49f3f546cdd821faca9146b770c212551))
+* use openIA api o release script ([e34988e](https://github.com/LucasFVidigal/azure_boards_demo/commit/e34988e25a9554e9fa20f6eed7d17f566c4affb6))
+
+
+### Bug Fixes
+
+* back to black ([206db92](https://github.com/LucasFVidigal/azure_boards_demo/commit/206db924ed1a3d701daaa7d8b885179598304d0e))
+* fixed api call ([a84fd34](https://github.com/LucasFVidigal/azure_boards_demo/commit/a84fd34e9618cdb8dd4df815bdfa0d6dc7ef983a))
+* fixed endpoint path ([9413593](https://github.com/LucasFVidigal/azure_boards_demo/commit/941359395d11de9e18d042ff71bb40f91128fcda))
+* fixed system_role parameter ([f9a5bd2](https://github.com/LucasFVidigal/azure_boards_demo/commit/f9a5bd225eced9d0a6b1c1fd9fcc649d9a6a2dcf))
+* update deepseek model ([a6cccfb](https://github.com/LucasFVidigal/azure_boards_demo/commit/a6cccfb90db97d38635dcd2db0ed17b3c4841c6b))
+
 ## [1.11.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.10.0...v1.11.0) (2025-10-23)
 
 
