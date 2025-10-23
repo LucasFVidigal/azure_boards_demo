@@ -40,7 +40,6 @@ jobs:
   # Este passo só roda se o Release Please criou um novo release (verificação com 'release_created')
       - name: Translate and Clean Changelog
         id: translate
-        if: ${{ steps.release.outputs.release_created }}
         run: |
           # Verifica se a chave da API está configurada
           if [ -z "$GEMINI_API_KEY" ]; then
@@ -181,7 +180,6 @@ jobs:
       # NOVO PASSO: Cria a branch, commita a tradução e faz o push da nova branch.
       - name: Commit and Push Translation Branch
         id: commit_push
-        if: ${{ steps.release.outputs.release_created && steps.translate.outputs.translation_done == 'true' }}
         run: |
           # Define a nova branch baseada no ID do workflow run para evitar colisões
           TRANSLATION_BRANCH="chore/translate-changelog-${{ github.run_id }}"
@@ -208,7 +206,6 @@ jobs:
       # 6️⃣ Abrir Pull Request para a tradução
       # NOVO PASSO: Abre um PR da branch temporária para a develop.
       - name: Create Translation Pull Request
-        if: ${{ steps.release.outputs.release_created && steps.commit_push.outputs.changes_pushed == 'true' }}
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
