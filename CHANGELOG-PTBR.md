@@ -1,101 +1,117 @@
+---
 # Registro de Alterações
 
-## 1.10.0 (2025-10-17)
+## [1.11.0] (2025-10-23)
 
-### Funcionalidades
+### Novidades
 
-* ajustar fluxos de trabalho
-* ajustar fluxos de trabalho
-* corrigir todos os erros
-* teste
-* **teste-componente:** testar tudo
+* Adiciona novo script para traduzir changelog
+* Adiciona script de tradução
+* Tentativa de limpar links do repositório
+* Atualiza workflows
+* Atualiza workflows
 
-### Correções de Erros
+### Correções de Bugs
 
-* corrige branchs de origem
-* corrige branchs de origem
+* Corrige chave da API
+* Remove condicionais
 
-## 1.9.0 (2025-10-17)
+## [1.10.0] (2025-10-17)
 
-### Funcionalidades
+### Novidades
 
-* **limpar-componente:** tentar limpar links de commits
+* Ajusta workflows
+* Ajusta workflows
+* Limpa todos os erros
+* Teste
+* **teste-componente:** testa tudo
 
-## 1.8.0 (2025-10-17)
+### Correções de Bugs
 
-### Funcionalidades
+* Corrige branches de origem
+* Corrige branches de origem
+
+## [1.9.0] (2025-10-17)
+
+### Novidades
+
+* **limpar-componente:** tenta limpar links de commits
+
+## [1.8.0] (2025-10-17)
+
+### Novidades
 
 * aaaa
-* testar opção gemini
+* Testa opção Gemini
 
-### Correções de Erros
+### Correções de Bugs
 
-* adicionar solução copilot
-* mudar todas as coisas
-* corrigir extensão do arquivo
-* corrigir execução de traduções
-* corrigir scc
-* corrigir token
-* corrigir script de tradução
-* corrigir etapa de tradução
-* corrigir tradução do changelog
-* corrigir script translate-changelog.js
-* testar essa bosta
-* traduzir changelog 2
-* tentar chat gpt
-* tentar copilot
-* tentar corrigir changelog
+* Adiciona solução do Copilot
+* Muda todas as coisas
+* Corrige extensão do arquivo
+* Corrige execução de traduções
+* Corrige SCC
+* Corrige token
+* Corrige script de tradução
+* Corrige etapa de tradução
+* Corrige tradução do changelog
+* Corrige script translate-changelog.js
+* Testa essa bosta
+* Traduz changelog 2
+* Tenta ChatGPT
+* Tenta Copilot
+* Tenta corrigir changelog
 
-## 1.7.0 (2025-10-16)
+## [1.7.0] (2025-10-16)
 
-### Funcionalidades
+### Novidades
 
-* atualizar release.yml
+* Atualiza release.yml
 
-### Correções de Erros
+### Correções de Bugs
 
-* corrigir token
+* Corrige token
 
-## 1.6.0 (2025-10-16)
+## [1.6.0] (2025-10-16)
 
-### Funcionalidades
+### Novidades
 
-* teste
-* teste
+* Teste
+* Teste
 
-## 1.5.0 (2025-10-16)
+## [1.5.0] (2025-10-16)
 
-### Funcionalidades
+### Novidades
 
-* teste aaaa
-* atualizar arquivos
+* Teste aaaa
+* Atualiza arquivos
 
-## 1.4.1 (2025-10-16)
+## [1.4.1] (2025-10-16)
 
-### Correções de Erros
+### Correções de Bugs
 
-* segundo teste
+* Segundo teste
 
-## 1.4.0 (2025-10-16)
+## [1.4.0] (2025-10-16)
 
-### Funcionalidades
+### Novidades
 
-* teste ponto
+* Teste ponto
 
-## 1.3.0 (2025-10-16)
+## [1.3.0] (2025-10-16)
 
-### Funcionalidades
+### Novidades
 
-* atualizar release
+* Atualiza release
 
-## 1.2.0 (2025-10-16)
+## [1.2.0] (2025-10-16)
 
-### Funcionalidades
+### Novidades
 
 * **main:** adicionado main.js
 
-## 1.1.0 (2025-10-16)
+## [1.1.0] (2025-10-16)
 
-### Funcionalidades
+### Novidades
 
-* **readme:** atualizar Readme
+* **readme:** atualiza Readme
