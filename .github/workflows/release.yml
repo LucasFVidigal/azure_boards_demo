@@ -37,55 +37,76 @@ jobs:
           target-branch: develop       # ← branch que vai receber o PR
       
       
-      # 4️⃣ Instalar dependências para tradução
-      - name: Instalar dependências
-        run: npm install openai
-
-      # 5️⃣ Traduzir CHANGELOG.md com DeepSeek via lib OpenAI
-      - name: Traduzir CHANGELOG.md
+      # 4️⃣ Traduzir CHANGELOG.md para PT-BR com DeepSeek API
+      - name: Traduzir CHANGELOG.md com DeepSeek
+        if: success()
         run: |
-          node -e "
-            import fs from 'fs';
-            import OpenAI from 'openai';
+          echo "🔍 Verificando arquivo CHANGELOG.md"
+          if [ ! -f CHANGELOG.md ]; then
+            echo "❌ Arquivo CHANGELOG.md não encontrado!"
+            exit 1
+          fi
 
-            const apiKey = process.env.DEEPSEEK_API_KEY;
-            if (!apiKey) throw new Error('❌ DEEPSEEK_API_KEY não definida.');
+          echo "📘 Instalando dependências..."
+          npm install axios
 
-            const client = new OpenAI({
-              apiKey,
-              baseURL: 'https://api.deepseek.com/openai/v1',
-            });
+          echo "🧠 Traduzindo conteúdo via DeepSeek..."
+          node <<'EOF'
+          import fs from "fs";
+          import axios from "axios";
 
-            const changelogPath = 'CHANGELOG.md';
-            const changelog = fs.readFileSync(changelogPath, 'utf8');
+          const apiKey = process.env.DEEPSEEK_API_KEY;
+          const changelog = fs.readFileSync("CHANGELOG.md", "utf8");
 
-            // 🔹 Remove links de commits e ajusta título de versão
-            const cleaned = changelog
-              .replace(/\\*\\([^)]*\\)\\*/g, '') // remove links tipo ([xxxxxx])
-              .replace(/## \\[(.*?)\\]\\([^)]*\\)/g, '## $1'); // deixa ## 1.10.0 (data)
+          // 🔧 Remove links de commits e também os links das versões
+          const cleanMarkdown = (text) => {
+            return text
+              // remove links de commits
+              .replace(/\(\[.*?\]\(https:\/\/github\.com\/[^\)]+\)\)/g, "")
+              // remove link das versões (ex: ## [1.10.0](https://...) → ## 1.10.0)
+              .replace(/## \[(.*?)\]\(https:\/\/[^\)]+\)/g, "## $1");
+          };
 
-            const system_role = 'Você é um tradutor técnico. Traduza o changelog para português, mantendo a formatação Markdown e removendo textos irrelevantes dos commits.';
-            const prompt = 'Traduza o seguinte changelog para português, mantendo estrutura e datas:\\n\\n' + cleaned;
+          const system_role = `
+            Você é um assistente de tradução especializado em converter textos técnicos e changelogs de software para o português do Brasil.
+            Mantenha a formatação Markdown original, mas remova quaisquer links de commits e links de versões.
+            Garanta que o texto traduzido seja claro, conciso e adequado para desenvolvedores brasileiros.
+          `;
 
-            (async () => {
-              try {
-                const completion = await client.chat.completions.create({
-                  model: 'deepseek-chat',
-                  messages: [
-                    { role: 'system', content: system_role },
-                    { role: 'user', content: prompt },
-                  ],
-                });
+          const prompt = `
+          Traduza o seguinte changelog para o português do Brasil, mantendo a formatação Markdown.
+          Remova também os links de commits e os links de versão.
+          Texto a traduzir:
+          ---
+          ${changelog}
+          `;
 
-                const translated = completion.choices[0].message.content;
-                fs.writeFileSync(changelogPath, translated);
-                console.log('✅ Tradução concluída e salva em CHANGELOG.md');
-              } catch (err) {
-                console.error('❌ Erro ao traduzir:', err);
-                process.exit(1);
-              }
-            })();
-          "
+          (async () => {
+            try {
+              const response = await axios.post(
+                "https://api.deepseek.com/openai/v1/chat/completions",
+                {
+                  model: "deepseek-chat",
+                  messages: [{ role: "user", content: prompt }, { role: "system", content: system_role }],
+                },
+                {
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${apiKey}`,
+                  },
+                }
+              );
+
+              const translated = response.data.choices?.[0]?.message?.content || "";
+              const cleaned = cleanMarkdown(translated);
+              fs.writeFileSync("CHANGELOG-PTBR.md", cleaned);
+              console.log("✅ Tradução concluída e salva em CHANGELOG-PTBR.md");
+            } catch (err) {
+              console.error("❌ Erro ao traduzir:", err.response?.data || err.message);
+              process.exit(1);
+            }
+          })();
+          EOF
 
       # 5️⃣ Criar um novo PR com a tradução
       - name: Criar Pull Request para tradução
