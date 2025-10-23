@@ -84,7 +84,7 @@ jobs:
           (async () => {
             try {
               const response = await axios.post(
-                "https://api.deepseek.com/openai/v1/chat/completions",
+                "https://api.deepseek.com/v1/chat/completions",
                 {
                   model: "deepseek-chat",
                   messages: [{ role: "user", content: prompt }, { role: "system", content: system_role }],
