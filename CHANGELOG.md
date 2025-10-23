@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.12.0...v1.13.0) (2025-10-23)
+
+
+### Features
+
+* try to sync release steps ([89156b2](https://github.com/LucasFVidigal/azure_boards_demo/commit/89156b2b06e1db5c26651aee5fd710a98bc3a1d5))
+
 ## [1.12.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.11.0...v1.12.0) (2025-10-23)
 
 
