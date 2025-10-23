@@ -67,6 +67,12 @@ jobs:
               .replace(/## \[(.*?)\]\(https:\/\/[^\)]+\)/g, "## $1");
           };
 
+          const system_role = `
+            Você é um assistente de tradução especializado em converter textos técnicos e changelogs de software para o português do Brasil.
+            Mantenha a formatação Markdown original, mas remova quaisquer links de commits e links de versões.
+            Garanta que o texto traduzido seja claro, conciso e adequado para desenvolvedores brasileiros.
+          `;
+
           const prompt = `
           Traduza o seguinte changelog para o português do Brasil, mantendo a formatação Markdown.
           Remova também os links de commits e os links de versão.
