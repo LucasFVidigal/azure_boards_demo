@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.13.0...v1.14.0) (2025-10-23)
+
+
+### Features
+
+* add new const in main.js ([5348ecc](https://github.com/LucasFVidigal/azure_boards_demo/commit/5348ecc8ca1166ad90a553d00f24b86f129601b2))
+
 ## [1.13.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.12.0...v1.13.0) (2025-10-23)
 
 

@@ -1,6 +1,12 @@
 ---
 # Registro de Alterações
 
+## [1.14.0] (2025-10-23)
+
+### Novidades
+
+* Adicionada nova constante em main.js
+
 ## [1.13.0] (2025-10-23)
 
 ### Novidades
@@ -11,8 +17,8 @@
 
 ### Novidades
 
-* Adicionado console.log no main.js
-* Atualização dos parâmetros do deepseek
+* Adicionado console.log em main.js
+* Atualização dos parâmetros do Deepseek
 * Uso da API OpenAI no script de release
 
 ### Correções de Bugs
@@ -21,17 +27,17 @@
 * Correção na chamada da API
 * Correção no caminho do endpoint
 * Correção no parâmetro system_role
-* Atualização do modelo deepseek
+* Atualização do modelo Deepseek
 
 ## [1.11.0] (2025-10-23)
 
 ### Novidades
 
-* Adição de novo script para traduzir changelog
-* Adição de script de tradução
+* Adicionado novo script para traduzir changelog
+* Adicionado script de tradução
 * Tentativa de limpar links do repositório
-* Atualização de workflows
-* Atualização de workflows
+* Atualização dos workflows
+* Atualização dos workflows
 
 ### Correções de Bugs
 
@@ -42,11 +48,11 @@
 
 ### Novidades
 
-* Ajuste de workflows
-* Ajuste de workflows
+* Ajuste nos workflows
+* Ajuste nos workflows
 * Correção de todos os erros
 * Teste
-* **teste-component:** testar tudo
+* **teste-component:** teste completo
 
 ### Correções de Bugs
 
@@ -68,8 +74,8 @@
 
 ### Correções de Bugs
 
-* Adição de solução do Copilot
-* Mudança de todas as coisas
+* Adicionada solução Copilot
+* Mudança em todas as coisas
 * Correção da extensão do arquivo
 * Correção da execução de traduções
 * Correção do SCC
