@@ -58,12 +58,18 @@ jobs:
           const apiKey = process.env.DEEPSEEK_API_KEY;
           const changelog = fs.readFileSync("CHANGELOG.md", "utf8");
 
-          const removeCommitLinks = (text) =>
-            text.replace(/\(\[.*?\]\(https:\/\/github\.com\/[^\)]+\)\)/g, "");
+          // 🔧 Remove links de commits e também os links das versões
+          const cleanMarkdown = (text) => {
+            return text
+              // remove links de commits
+              .replace(/\(\[.*?\]\(https:\/\/github\.com\/[^\)]+\)\)/g, "")
+              // remove link das versões (ex: ## [1.10.0](https://...) → ## 1.10.0)
+              .replace(/## \[(.*?)\]\(https:\/\/[^\)]+\)/g, "## $1");
+          };
 
           const prompt = `
           Traduza o seguinte changelog para o português do Brasil, mantendo a formatação Markdown.
-          Remova também os links de commits (mas mantenha o texto explicativo dos itens).
+          Remova também os links de commits e os links de versão.
           Texto a traduzir:
           ---
           ${changelog}
@@ -86,7 +92,7 @@ jobs:
               );
 
               const translated = response.data.choices?.[0]?.message?.content || "";
-              const cleaned = removeCommitLinks(translated);
+              const cleaned = cleanMarkdown(translated);
               fs.writeFileSync("CHANGELOG-PTBR.md", cleaned);
               console.log("✅ Tradução concluída e salva em CHANGELOG-PTBR.md");
             } catch (err) {
