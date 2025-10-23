@@ -29,6 +29,7 @@ jobs:
 
       # 3️⃣ Rodar Release Please
       - name: Run Release Please
+        id: release
         uses: googleapis/release-please-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -39,7 +40,7 @@ jobs:
       
       # 4️⃣ Traduzir CHANGELOG.md para PT-BR com DeepSeek API
       - name: Traduzir CHANGELOG.md com DeepSeek
-        if: success()
+        if: steps.release.outputs.release_created == 'true'
         run: |
           echo "🔍 Verificando arquivo CHANGELOG.md"
           if [ ! -f CHANGELOG.md ]; then
@@ -110,7 +111,7 @@ jobs:
 
       # 5️⃣ Criar um novo PR com a tradução
       - name: Criar Pull Request para tradução
-        if: success()
+        if: steps.release.outputs.release_created == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
