@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.11.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.10.0...v1.11.0) (2025-10-23)
+
+
+### Features
+
+* add new script to tranlate changelog ([0aa8cc5](https://github.com/LucasFVidigal/azure_boards_demo/commit/0aa8cc5c6f8d3266e6d7e6c829303a4d40a88454))
+* add translate script ([6e19b6c](https://github.com/LucasFVidigal/azure_boards_demo/commit/6e19b6c464212bcea89ccaebb8654ec56ebed8f6))
+* trying clear repo links ([a7458ed](https://github.com/LucasFVidigal/azure_boards_demo/commit/a7458edbaee34b6b3136a3d6789aceb86ec57d68))
+* update workflows ([8f56268](https://github.com/LucasFVidigal/azure_boards_demo/commit/8f56268423847a9fc9b4c55330c472f6e6e08b31))
+* update workflows ([e5fe214](https://github.com/LucasFVidigal/azure_boards_demo/commit/e5fe214b5db9d446ce5fa9691da91327d1fac50e))
+
+
+### Bug Fixes
+
+* fix api Key ([6c0bc20](https://github.com/LucasFVidigal/azure_boards_demo/commit/6c0bc2023a8db43bcc3f1604d226bdcc36e1e317))
+* remove ifs ([a9927b4](https://github.com/LucasFVidigal/azure_boards_demo/commit/a9927b4a1e8e718743f11999007755f056a63871))
+
 ## [1.10.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.9.0...v1.10.0) (2025-10-17)
 
 
