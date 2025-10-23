@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.14.0...v1.15.0) (2025-10-23)
+
+
+### Features
+
+* added console.log ([0288c62](https://github.com/LucasFVidigal/azure_boards_demo/commit/0288c62df361b49066f034af537c14ff2114d590))
+
 ## [1.14.0](https://github.com/LucasFVidigal/azure_boards_demo/compare/v1.13.0...v1.14.0) (2025-10-23)
 
 
